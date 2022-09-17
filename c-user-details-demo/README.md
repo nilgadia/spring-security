@@ -1,0 +1,7 @@
+user
+userdetails
+userdetailsservice
+userdetailsmanager
+inmemoryuserdetailsmanager
+ldapuserdetailsmanager
+jdbcuserdetailamanager
