@@ -1,4 +1,12 @@
-###### I am using HSQLDB for demo. To connect database 
+## Spring Security In Details 
+
+### Prerequisite
+
+* Java 11
+* Maven
+* IDE (Eclipse & IntelliJ)
+
+###### I am using HSQLDB for demo.
 
 ##### To access HSQLDB GUI tools, follow below steps.
 ###### Home path to installed hsqldb.jar, in my case it's in C:\..\..\.m2\repository\org\hsqldb\hsqldb\2.7.0
@@ -11,3 +19,11 @@
 ###### In my case it is jdbc:hsqldb:hsql://localhost/testdb;file:testdb/C:/.../learning/spring-security ()
 ###### Provide username 'SA'
 ###### Password as blank
+
+###### Project Setup
+<pre>
+Import project
+build common-service - mvn clean install -Dmaven.test.skip=true
+Add module to project.
+Start spring boot app
+</pre>
