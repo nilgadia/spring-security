@@ -1,8 +1,10 @@
 server:
-  port: 6768
+  port: 6767
+  servlet:
+    contextPath: /spring-security
 
 spring:
   security:
     user:
-      name: shahid
+      name: ssiqbal
       password: Hello@123
