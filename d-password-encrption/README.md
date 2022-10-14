@@ -1,18 +1,24 @@
-encoding
-  ASCII, BASE64, UNICODE
-encryption
-  Encrypt using secret key
-symmetric same key use for both encrypt & decrypt
-asymmetric public & private key     
-    The private key must be kept secret & public key knows to anyone
-Disadvantages can be decrypted if someone knows private key
-TLS, VPN, SSH
-Hashing
-    `In hashing, data is converted to the hash using some hashing function, which can be any number generated from string or
-    text Various hashing algorithms are MD 5 SHA 256 Data once hashed is non reversible`
-    
-    NoOpPasswordEncoder
-    StandardPasswordEncoder
-    Pbkdf2PasswordEncoder
-    BCryptPasswordEncoder
-    SCryptPasswordEncoder
+<img src="images/password-encryption.png">
+
+<pre>
+
+AbstractUserDetailsAuthenticationProvider
+
+public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+		Assert.isInstanceOf(UsernamePasswordAuthenticationToken.class, authentication,
+				() -> this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.onlySupports",
+						"Only UsernamePasswordAuthenticationToken is supported"));
+		String username = determineUsername(authentication);
+		boolean cacheWasUsed = true;
+		
+		// First get from cache
+		UserDetails user = this.userCache.getUserFromCache(username);
+		// Not found - load from users table
+		UserDetails loadedUser = this.getUserDetailsService().loadUserByUsername(username); // Default users 
+		// Compare the password
+		additionalAuthenticationChecks(user, (UsernamePasswordAuthenticationToken) authentication);
+</pre>
+
+###### Generate password using http://localhost:8080/spring-security/welcome&name=ssiqbal (Generated password using passwordEncoder.encode("Hello@123").)
+
+###### Insert the generated password to users table.

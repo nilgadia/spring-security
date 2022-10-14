@@ -1,7 +1,8 @@
 package org.shahid.security;
 
 import lombok.AllArgsConstructor;
-import org.shahid.model.User;
+import org.shahid.entity.Authorities;
+import org.shahid.entity.Users;
 import org.shahid.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,16 +27,18 @@ public class CustomizeUsernamePasswordAuthenticationProvider implements Authenti
     public Authentication authenticate(Authentication authentication) {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        User user = userRepository.findByEmail(username);
+        Users user = userRepository.findByUsername(username);
         if (user != null) {
-            if (passwordEncoder.matches(pwd, user.getPwd())) {
+            if (passwordEncoder.matches(pwd, user.getPassword())) {
                 List<GrantedAuthority> authorities = new ArrayList<>();
-                authorities.add(new SimpleGrantedAuthority(user.getRole()));
+                for (Authorities authority : user.getAuthorities()) {
+                    authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+                }
                 return new UsernamePasswordAuthenticationToken(username, pwd, authorities);
             } else {
                 throw new BadCredentialsException("Invalid password!");
             }
-        }else {
+        } else {
             throw new BadCredentialsException("No user registered with this details!");
         }
     }

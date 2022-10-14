@@ -1,0 +1,1 @@
+<img src="images/authentication_provider.png">

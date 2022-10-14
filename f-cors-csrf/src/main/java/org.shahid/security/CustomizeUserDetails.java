@@ -1,6 +1,7 @@
 package org.shahid.security;
 
-import org.shahid.model.User;
+import org.shahid.dto.AuthorityDto;
+import org.shahid.dto.UsersDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,27 +14,29 @@ public class CustomizeUserDetails implements UserDetails {
 
     private static final long serialVersionUID = -6690946490872875352L;
 
-    private final User user;
+    private final UsersDto user;
 
-    public CustomizeUserDetails(User customer) {
-        this.user = customer;
+    public CustomizeUserDetails(UsersDto user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        for (AuthorityDto authorityDto : user.getAuthorities()) {
+            authorities.add(new SimpleGrantedAuthority(authorityDto.getUsername()));
+        }
         return authorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getPwd();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.getUsername();
     }
 
     @Override
