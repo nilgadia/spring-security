@@ -1,6 +1,6 @@
-[https://oauth.net/2/](https://oauth.net/2/)
-[https://developers.google.com/identity/protocols/oauth2](https://developers.google.com/identity/protocols/oauth2)
-[https://oauth.com/playground/](https://oauth.com/playground/)
+[https://oauth.net/2/](https://oauth.net/2/)</br>
+[https://developers.google.com/identity/protocols/oauth2](https://developers.google.com/identity/protocols/oauth2)</br>
+[https://oauth.com/playground/](https://oauth.com/playground/)</br>
 <img src="images/oauth.png">
 
 #### Steps to run this demo
