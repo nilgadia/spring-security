@@ -2,6 +2,7 @@
 [https://developers.google.com/identity/protocols/oauth2](https://developers.google.com/identity/protocols/oauth2)</br>
 [https://oauth.com/playground/](https://oauth.com/playground/)</br>
 <img src="images/oauth.png">
+<img src="images/oauth1.png">
 
 #### Steps to run this demo
 ###### Registering the client details with the GitHub to use it's OAUTH2 Auth server
